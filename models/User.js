@@ -1,12 +1,11 @@
-const { Schema, model } = require('mongoose');
-const moment = require('moment');// Require schema and model from mongoose
+const { Schema, model } = require('mongoose');// Import Schema and model package from mongoose
 
 // Construct a new instance of the schema class
 const userSchema = new Schema(
     {
         // Configure individual properties using Schema Types
         username: { type: String, required: true, unique: true, trim: true },
-        email: {
+        email: {//Use Regex to validate correct email format
             type: String, required: true, unique: true, match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
                 "Please fill a valid email address",]
         },
@@ -27,5 +26,6 @@ userSchema.virtual('friendCount').get(function () {
 
 // Create the User model using the UserSchema
 const User = model('User', userSchema);
+
 // Export the User model
 module.exports = User;

@@ -1,6 +1,9 @@
-const { Schema, model, Types } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');// Import Schema and model package from mongoose
+const Reaction = require('./Reaction');// Import the Reaction model to use as a subdocument in Thought model
+const formatDate = require('../utils/helper.js')// import the helper function to format the date
 
 const ThoughtSchema = new mongoose.Schema({
+    // Configure individual properties using Schema Types
     thoughtText: {
         type: String,
         required: true,
@@ -10,7 +13,7 @@ const ThoughtSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        get: timestamp => dateFormat(timestamp)
+        get: (date) => formatDate(date)
     },
     username: {
         type: String,
@@ -19,27 +22,13 @@ const ThoughtSchema = new mongoose.Schema({
     reactions: [ReactionSchema]
 });
 
-const ReactionSchema = new mongoose.Schema({
-    reactionId: {
-        type: mongoose.Schema.Types.ObjectId,
-        default: () => new mongoose.Types.ObjectId()
-    },
-    reactionBody: {
-        type: String,
-        required: true,
-        maxlength: 280
-    },
-    username: {
-        type: String,
-        required: true
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-        get: timestamp => dateFormat(timestamp)
-    }
+// Create a virtual called reactionCount that retrieves thought's reactions array field on query.
+ThoughtSchema.virtual('reactionCount').get(function () {
+    return this.reactions.length;
 });
 
+// Create the Thought model using the ThoughtSchema
 const Thought = mongoose.model('Thought', ThoughtSchema);
 
+// Export the Thought model
 module.exports = Thought;
