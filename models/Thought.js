@@ -1,5 +1,5 @@
 const { Schema, model, Types } = require('mongoose');// Import Schema and model package from mongoose
-const Reaction = require('./Reaction');// Import the Reaction model to use as a subdocument in Thought model
+const ReactionSchema = require('./Reaction');// Import the Reaction schema to use as a subdocument in Thought model
 const formatDate = require('../utils/helper.js')// import the helper function to format the date
 
 const ThoughtSchema = new mongoose.Schema({
@@ -10,7 +10,7 @@ const ThoughtSchema = new mongoose.Schema({
         minlength: 1,
         maxlength: 280
     },
-    createdAt: {
+    createdAt: {//Use a getter method to format the timestamp on query
         type: Date,
         default: Date.now,
         get: (date) => formatDate(date)

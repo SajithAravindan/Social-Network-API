@@ -1,5 +1,5 @@
-const User = require('./User');//
-const Thought = require('./Thought');
-const Reaction = require('./Reaction');
+const User = require('./User');// Import the User model
+const Thought = require('./Thought');// Import the Thought model
+//const Reaction = require('./Reaction');// Import the Reaction Schema
 
-module.exports = { User, Thought, Reaction };
+module.exports = { User, Thought};// Export the User, Thought models
