@@ -1,12 +1,12 @@
-const User = require('../models/User');
-const Thought = require('../models/Thought');
+const User = require('../models/User');// Import the User model
+const Thought = require('../models/Thought');// Import the Thought model
 
 module.exports = {
     // Get all users
     getUsers(req, res) {
         User.find()
-            .select('-__v')
-            .sort({ _id: -1 })
+            .select('-__v')// Exclude the __v property
+            .sort({ _id: -1 })// Sort in descending order by the _id value
             .then(dbUserData => res.json(dbUserData))
             .catch(err => {
                 console.log(err);
@@ -19,7 +19,7 @@ module.exports = {
         User.findOne({ _id: req.params.id })
             .select('-__v')
             .sort({ _id: -1 })
-            .populate({
+            .populate({// Populate the friends and thoughts fields
                 path: 'friends',
                 select: '-__v'
             })
