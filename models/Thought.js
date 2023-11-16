@@ -2,7 +2,7 @@ const { Schema, model, Types } = require('mongoose');// Import Schema and model 
 const ReactionSchema = require('./Reaction');// Import the Reaction schema to use as a subdocument in Thought model
 const formatDate = require('../utils/helper.js')// import the helper function to format the date
 
-const ThoughtSchema = new mongoose.Schema({
+const ThoughtSchema = new Schema({
     // Configure individual properties using Schema Types
     thoughtText: {
         type: String,
@@ -28,7 +28,7 @@ ThoughtSchema.virtual('reactionCount').get(function () {
 });
 
 // Create the Thought model using the ThoughtSchema
-const Thought = mongoose.model('Thought', ThoughtSchema);
+const Thought =  model('Thought', ThoughtSchema);
 
 // Export the Thought model
 module.exports = Thought;
