@@ -48,16 +48,21 @@ GIVEN a functional Express.js API
 
 
 ## Technologies Used
-Javascript, Node.js, Express, Insomnia, MongoDB and Mongoose ODM.
+* Javascript
+* Node.js
+* Express
+* Insomnia
+* MongoDB and
+* Mongoose ODM.
 
 ## Installation
 To install this project:
 * Start by forking this repository and clone repository to your local machine.
 * Open the project in your preffered IDE
-* Loot at package.json file that specifies dependencies for this project, so be sure to run "npm    install". This will install all the required packages. Also look at the above section and install all the required Tools
+* Look at package.json file that specifies dependencies for this project, so be sure to run "npm    install". This will install all the required packages. Also look at the above section and install all the required Tools
 
 ## Usage
-* In your IDE treminalrRun command "npm run start" (or "node server.js").  
+* In your IDE treminal and run command "npm run start" (or "node server.js").  
 * Open insomnia and type in "localhost:3001/api/_" in the address bar and check out the following routes: 
 
 User + Friends:-
