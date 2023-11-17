@@ -12,10 +12,13 @@ const { getThoughts,
     // GET all and POST at /api/thoughts
     router.route('/').get(getThoughts).post(createThought);
     
-    // GET one, PUT, and DELETE at /api/thoughts/:id
+    // GET one, PUT, and DELETE at /api/thoughts/:thoughtId
     router.route('/:thoughtId').get(getThoughtById).put(updateThought).delete(deleteThought);
 
-    // POST and DELETE at /api/thoughts/:thoughtId/reactions
-    router.route('/:thoughtId/reactions').post(addReaction).delete(removeReaction);
+    // POST at /api/thoughts/:thoughtId/reactions
+    router.route('/:thoughtId/reactions').post(addReaction);
+
+    // DELETE at /api/thoughts/:thoughtId/reactions/:reactionId
+    router.route('/:thoughtId/reactions/:reactionId').delete(removeReaction);
 
     module.exports = router;// Export the router

@@ -68,26 +68,27 @@ module.exports = {
             });
     },
     deleteThought(req, res) {
-        Thought.findOneAndDelete({_id: req.parms.thoughtId})
-        .then((dbThoughtData) => {
+        Thought.findOneAndDelete({_id: req.params.thoughtId})
+        .then((dbThoughtData) => 
             !dbThoughtData
             ? res.status(404).json({ message: 'No thought found with this id!' })   
             : User.findOneAndUpdate(
-                { username: dbThoughtData.username},
+                { thoughts: req.params.thoughtId},
                 { $pull: { thoughts: req.params.thoughtId}},
                 { new: true}        
             )
-        })
-        .then(dbUserData => {
+        )
+        .then(dbUserData => 
             !dbUserData 
             ? res.status(404).json({ message: 'No user found with this username!' }) 
-            : res.json(dbUserData);                
-        })
+            : res.json({ message: 'Thought successfully deleted!' })                
+        )
         .catch(err => {
             console.log(err);
             res.sendStatus(400);
         }); 
     },
+    //Add a reaction to a thought
     addReaction(req, res) {
         Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
@@ -104,6 +105,7 @@ module.exports = {
             res.sendStatus(400);
         });
     },
+    //Remove a reaction from a thought
     removeReaction(req, res) {
         Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
