@@ -44,7 +44,7 @@ module.exports = {
             .then(dbUserData => {
                 !dbUserData 
                 ? res.status(404).json({ message: 'No user found with this username!' }) 
-                : res.json(dbUserData);                
+                : res.json({ message: 'Thought successfully Added!' });                 
             })
             .catch(err => {
                 console.log(err);

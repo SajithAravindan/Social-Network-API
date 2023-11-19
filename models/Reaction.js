@@ -1,5 +1,5 @@
 const { Schema, Types } = require('mongoose');// Import Schema and types package from mongoose
-const formatDate = require('../utils/helper.js')// import the helper function to format the date
+const moment = require('moment');
 
 const ReactionSchema = new Schema({
     // Configure individual properties using Schema Types
@@ -20,8 +20,8 @@ const ReactionSchema = new Schema({
     createdAt: {//Use a getter method to format the timestamp on query
         type: Date,
         default: Date.now,
-        get: (date) => formatDate(date)
-    }
+        get: (timestamp) => moment(timestamp).format('MMM Do, YYYY [at] hh:mm a'),
+    },
 },
     {
         toJSON: {
