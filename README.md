@@ -78,10 +78,10 @@ Thought + Reactions:-
 
 ## Demo
 
-[![Watch the video](./imgs/demo.jpg)](https://drive.google.com/file/d/1MuLlWazhDAwvh-jc_8EOcJwFuNNzAOLJ/view)
+[![Watch the video](./imgs/demo.jpg)](https://drive.google.com/file/d/1aXu7nWJY9feCIcZtZ5Wpg8Qprb3chvCA/view)
 
 
-Demo Video Link: https://drive.google.com/file/d/1MuLlWazhDAwvh-jc_8EOcJwFuNNzAOLJ/view
+Demo Video Link: https://drive.google.com/file/d/1aXu7nWJY9feCIcZtZ5Wpg8Qprb3chvCA/view
 
 
 ## License
